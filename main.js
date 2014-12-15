@@ -213,7 +213,7 @@ Mousetrap.bindGlobal('shift+space', function () {
     var val = $('#editor_js').val();
     eval(val);
     $('#editorDiv').fadeToggle();
-    $('#gifList').fadeOut();
+	$('#gifList').fadeToggle();
     $('h1').text("");
     $('html').focus();
     return false;
