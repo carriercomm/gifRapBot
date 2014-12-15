@@ -1,32 +1,4 @@
 
-$(document).ready(function() {
-	$('#butttn').click(function () {
-    var val = $('#editor_js').val();
-    console.log(val);
-    eval(val);
-})
-})
-
-Mousetrap.bind('shift+r', function () {
-    var val = $('#editor_js').val();
-    console.log(val);
-    eval(val);
-})
-Mousetrap.bindGlobal('shift+space', function () {
-    var val = $('#editor_js').val();
-    eval(val);
-    $('#editorDiv').fadeToggle();
-    $('#gifList').fadeOut();
-    $('h1').text("");
-    $('html').focus();
-    return false;
-})
-Mousetrap.bind('shift+e', function() {
-	$('#editorDiv').fadeToggle();
-})
-Mousetrap.bind('shift+g', function() {
-	$('#gifList').fadeToggle();
-})
 //key bindings
 Mousetrap.bind('q', function() {
 	speakNspell('yo', "blue");
@@ -214,3 +186,41 @@ var playSound = function(id) {
 meSpeak.loadConfig("lib/mespeak_config.json");
 //choose a voice from the voice folder here
 meSpeak.loadVoice('voices/en/en-us.json');
+
+//in-browser editor
+
+$(document).ready(function() {
+	$('#butttn').click(function () {
+    var val = $('#editor_js').val();
+    console.log(val);
+    eval(val);
+})
+   $.ajax({
+   url : "main.js",
+   dataType: "text",
+   success : function (data) {
+       $("#editor_js").text(data);
+          }
+})
+})
+
+Mousetrap.bind('shift+r', function () {
+    var val = $('#editor_js').val();
+    console.log(val);
+    eval(val);
+})
+Mousetrap.bindGlobal('shift+space', function () {
+    var val = $('#editor_js').val();
+    eval(val);
+    $('#editorDiv').fadeToggle();
+    $('#gifList').fadeOut();
+    $('h1').text("");
+    $('html').focus();
+    return false;
+})
+Mousetrap.bind('shift+e', function() {
+	$('#editorDiv').fadeToggle();
+})
+Mousetrap.bind('shift+g', function() {
+	$('#gifList').fadeToggle();
+})
